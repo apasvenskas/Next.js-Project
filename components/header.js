@@ -1,13 +1,14 @@
 import Link from "next/link";
 import logoImg from "@/assets/logo.png";
+import styles from "./header.module.css"; //difrent way of importing module specifc css, by the use of classname.specific
 
 export default function MainHeader(){
-    return <header>
-        <Link href="/">
+    return <header className={styles.header}>
+        <Link className={styles.logo} href="/">
             <img src={logoImg.src} alt="plate with food"/>
-            NextLevel Food
+            Next Level Food
         </Link>
-        <nav>
+        <nav className={styles.nav}>
             <ul>
                 <li>
                     <Link href="/meals">Browse Meals</Link>
