@@ -2,9 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import logoImg from "@/assets/logo.png";
 import styles from "./header.module.css"; //difrent way of importing module specifc css, by the use of classname.specific
+import NavLink from "./navLink";
+
 // import HeaderBackground from "./main-header";
 
 export default function MainHeader() {
+  // aditional import for active header link
+  
   return (
     <>
       {/* <HeaderBackground /> */}
@@ -16,10 +20,10 @@ export default function MainHeader() {
         <nav className={styles.nav}>
           <ul>
             <li>
-              <Link href="/meals">Browse Meals</Link>
+              <NavLink href="/meals">Browse Meals</NavLink>
             </li>
             <li>
-              <Link href="/community">Foodies Community</Link>
+              <NavLink href="/community" >Community</NavLink>
             </li>
           </ul>
         </nav>
