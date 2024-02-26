@@ -1,12 +1,16 @@
+'use client';
 
 import ImagePicker from '@/components/meals/image-picker';
 import classes from './page.module.css';
-import { shareMeal } from '@/fetchFunctions/action'; 
 import MealsFormSubmit from '@/components/meals/meals-form-submit';
+import { shareMeal } from '@/fetchFunctions/action'; 
+import { useFormState } from 'react-dom';
 
 
 export default function ShareMealPage() {
-
+  // the useFormsState hook is resposible for the state of this form (functions like useState) requires 2 elements. 
+  // will use to keep the filled inouts after error. (for rendering the error)
+  const [state, formAction] = useFormState(shareMeal, {message: null});
   return (
     <>
       <section className={classes.header}>
@@ -16,7 +20,7 @@ export default function ShareMealPage() {
         <p>Or any other meal you feel needs sharing!</p>
       </section>
       <main className={classes.main}>
-        <form className={classes.form} action={shareMeal}>
+        <form className={classes.form} action={formAction}>
           <div className={classes.row}>
             <p>
               <label htmlFor="name">Your name</label>
@@ -45,6 +49,7 @@ export default function ShareMealPage() {
             ></textarea>
           </p>
           <ImagePicker label="Your image" name="image" />
+          {state.message && <p>{state.message}</p>}
           <p className={classes.actions}>
             <MealsFormSubmit />
           </p>
